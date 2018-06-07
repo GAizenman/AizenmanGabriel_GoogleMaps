@@ -48,17 +48,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private static final float MIN_DISTANCE_CHANGE_FOR_UPDATE = 0.0f;
     private static final int MY_LOC_ZOOM_FACTOR = 17;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
     }
+
 
     /**
      * Manipulates the map once available.
@@ -99,7 +99,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 */
 
 
-        //locationSearch = (EditText) findViewById(R.id.editText_address);
+        locationSearch = (EditText) findViewById(R.id.editText_addr);
         gotMyLocationOneTime = false;
         getLocation();
 
@@ -335,12 +335,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 if (provider.equals(LocationManager.GPS_PROVIDER)) {
                     mMap.addCircle(new CircleOptions().center(userLocation).radius(5).strokeColor(Color.RED).strokeWidth(2).fillColor(Color.RED));
                 } else if (provider.equals(LocationManager.NETWORK_PROVIDER)) {
-                   mMap.addCircle(new CircleOptions().center(userLocation).radius(5).strokeColor(Color.BLUE).strokeWidth(2).fillColor(Color.BLUE));
+                    mMap.addCircle(new CircleOptions().center(userLocation).radius(5).strokeColor(Color.BLUE).strokeWidth(2).fillColor(Color.BLUE));
                 }
                 mMap.animateCamera(update);
             }
         }
     }
+
     public void trackMyLocation(View view){
         getLocation();
         if(notTrackingMyLocation==true){
@@ -366,5 +367,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void clearMarkers(View view){
         mMap.clear();
     }
+
 
 }
